@@ -1,22 +1,19 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
-import { Products } from "./Products";
+import { Product } from "./Product";
 
 @Entity()
-export class ProductTranslations {
+export class ProductTranslation {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @ManyToOne(() => Products, (product) => product.translations)
-  product!: Products;
+  @ManyToOne(() => Product, (product) => product.translations)
+  product!: Product;
 
   @Column({ type: "varchar", length: 10 })
   locale!: string;
 
   @Column({ type: "text" })
   name!: string;
-
-  @Column({ type: "text", nullable: true })
-  vendor!: string;
 
   @Column({ type: "text", nullable: true })
   category!: string;

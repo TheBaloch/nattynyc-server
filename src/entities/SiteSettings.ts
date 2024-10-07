@@ -9,7 +9,7 @@ export class SiteSettings {
   locales: string[] = ["en"];
 
   @Column({ type: "json" })
-  currencies: string[] = ["usd"];
+  currencies: string[] = ["USD"];
 
   @Column({ type: "varchar", length: 255, nullable: true })
   siteTitle!: string;

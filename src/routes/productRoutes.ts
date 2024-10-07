@@ -15,7 +15,7 @@ router.get("/product/:slug", getProductBySlug);
 
 router.post(
   "/product",
-  passport.authenticate("jwt", { session: false }),
+  //passport.authenticate("jwt", { session: false }),
   addProduct
 );
 

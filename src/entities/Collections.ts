@@ -6,7 +6,7 @@ import {
   OneToMany,
   JoinTable,
 } from "typeorm";
-import { Products } from "./Products";
+import { Product } from "./Product";
 import { CollectionTranslations } from "./CollectionTranslations";
 
 @Entity()
@@ -17,9 +17,12 @@ export class Collections {
   @Column({ type: "varchar", unique: true })
   slug!: string;
 
-  @ManyToMany(() => Products, { cascade: true })
+  @Column({ type: "varchar" })
+  name!: string;
+
+  @ManyToMany(() => Product, { cascade: true })
   @JoinTable()
-  products!: Products[];
+  products!: Product[];
 
   @OneToMany(
     () => CollectionTranslations,

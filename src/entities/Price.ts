@@ -1,13 +1,13 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
-import { Products } from "./Products";
+import { Product } from "./Product";
 
 @Entity()
 export class Price {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @ManyToOne(() => Products, (product) => product.prices)
-  product!: Products;
+  @ManyToOne(() => Product, (product) => product.prices)
+  product!: Product;
 
   @Column({ type: "decimal", precision: 10, scale: 2 })
   price!: number;

@@ -3,14 +3,16 @@ import {
   PrimaryGeneratedColumn,
   Column,
   OneToMany,
+  ManyToOne,
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { Price } from "./Price";
-import { ProductTranslations } from "./ProductTranslations";
+import { ProductTranslation } from "./ProductTranslation";
+import { Vendor } from "./Vendor";
 
 @Entity()
-export class Products {
+export class Product {
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -26,8 +28,11 @@ export class Products {
   @Column({ type: "varchar" })
   status!: "active" | "draft" | "inactive";
 
-  @OneToMany(() => ProductTranslations, (translation) => translation.product)
-  translations!: ProductTranslations[];
+  @OneToMany(() => ProductTranslation, (translation) => translation.product)
+  translations!: ProductTranslation[];
+
+  @ManyToOne(() => Vendor, (vendor) => vendor.products)
+  vendor!: Vendor;
 
   @OneToMany(() => Price, (price) => price.product)
   prices!: Price[];

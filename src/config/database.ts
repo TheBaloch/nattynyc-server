@@ -2,13 +2,14 @@ import { DataSource } from "typeorm";
 
 import { Users } from "../entities/Users";
 import { SiteSettings } from "../entities/SiteSettings";
-import { Products } from "../entities/Products";
-import { ProductTranslations } from "../entities/ProductTranslations";
+import { Product } from "../entities/Product";
+import { ProductTranslation } from "../entities/ProductTranslation";
 import { Price } from "../entities/Price";
 import { Collections } from "../entities/Collections";
 import { CollectionTranslations } from "../entities/CollectionTranslations";
 
 import * as dotenv from "dotenv";
+import { Vendor } from "../entities/Vendor";
 
 dotenv.config();
 
@@ -22,11 +23,12 @@ export const AppDataSource = new DataSource({
   entities: [
     Users,
     SiteSettings,
-    Products,
-    ProductTranslations,
+    Product,
+    ProductTranslation,
     Price,
     Collections,
     CollectionTranslations,
+    Vendor,
   ],
   synchronize: process.env.DB_SYNCHRONIZE === "true",
 });
