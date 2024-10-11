@@ -3,13 +3,11 @@ import {
   PrimaryGeneratedColumn,
   Column,
   OneToMany,
-  ManyToOne,
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { Price } from "./Price";
 import { ProductTranslation } from "./ProductTranslation";
-import { Vendor } from "./Vendor";
 
 @Entity()
 export class Product {
@@ -22,7 +20,7 @@ export class Product {
   @Column({ type: "text" })
   image!: string;
 
-  @Column({ type: "text", nullable: true })
+  @Column({ type: "json", nullable: true })
   gallery!: string[];
 
   @Column({ type: "varchar" })
@@ -30,9 +28,6 @@ export class Product {
 
   @OneToMany(() => ProductTranslation, (translation) => translation.product)
   translations!: ProductTranslation[];
-
-  @ManyToOne(() => Vendor, (vendor) => vendor.products)
-  vendor!: Vendor;
 
   @OneToMany(() => Price, (price) => price.product)
   prices!: Price[];

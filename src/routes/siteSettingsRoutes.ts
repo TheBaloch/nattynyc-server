@@ -1,9 +1,12 @@
 import { Router } from "express";
-//import { getSettings } from "../controllers/siteSettingsController";
+import {
+  getSiteSettings,
+  updateSiteSettings,
+} from "../controllers/siteSettingsController";
 
 const router = Router();
 
-//router.get("/settings", getSettings);
-//router.put("/settings", getSettings);
+router.get("/settings", getSiteSettings);
+router.put("/settings", updateSiteSettings);
 
 export default router;

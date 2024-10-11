@@ -6,7 +6,9 @@ export class ProductTranslation {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @ManyToOne(() => Product, (product) => product.translations)
+  @ManyToOne(() => Product, (product) => product.translations, {
+    onDelete: "CASCADE",
+  })
   product!: Product;
 
   @Column({ type: "varchar", length: 10 })
@@ -17,6 +19,12 @@ export class ProductTranslation {
 
   @Column({ type: "text", nullable: true })
   category!: string;
+
+  @Column({ type: "text", nullable: true })
+  vendor!: string;
+
+  @Column({ type: "text", nullable: true })
+  type!: string;
 
   @Column({ type: "json", nullable: true })
   tags!: string[];

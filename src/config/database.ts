@@ -9,7 +9,6 @@ import { Collections } from "../entities/Collections";
 import { CollectionTranslations } from "../entities/CollectionTranslations";
 
 import * as dotenv from "dotenv";
-import { Vendor } from "../entities/Vendor";
 
 dotenv.config();
 
@@ -28,7 +27,6 @@ export const AppDataSource = new DataSource({
     Price,
     Collections,
     CollectionTranslations,
-    Vendor,
   ],
   synchronize: process.env.DB_SYNCHRONIZE === "true",
 });

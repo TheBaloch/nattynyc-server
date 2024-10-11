@@ -8,8 +8,26 @@ export class SiteSettings {
   @Column({ type: "json" })
   locales: string[] = ["en"];
 
+  @Column({ type: "varchar", length: 10, default: "en" })
+  defaultLocale!: string;
+
+  @Column({ type: "boolean", default: false })
+  translationEnabled!: boolean;
+
+  @Column({ type: "boolean", default: false })
+  aiProductOptimization!: boolean;
+
+  @Column({ type: "boolean", default: false })
+  activeTranslationEnabled!: boolean;
+
   @Column({ type: "json" })
   currencies: string[] = ["USD"];
+
+  @Column({ type: "varchar", length: 10, default: "USD" })
+  defaultCurrency!: string;
+
+  @Column({ type: "boolean", default: false })
+  multiCurrencyEnabled!: boolean;
 
   @Column({ type: "varchar", length: 255, nullable: true })
   siteTitle!: string;
@@ -18,7 +36,7 @@ export class SiteSettings {
   siteDescription!: string;
 
   @Column({ type: "json", nullable: true })
-  siteKeywords!: string[];
+  siteKeywords: string[] = [];
 
   @Column({ type: "varchar", length: 255, nullable: true })
   siteURL!: string;
@@ -31,9 +49,6 @@ export class SiteSettings {
 
   @Column({ type: "text", nullable: true })
   defaultMetaDescription!: string;
-
-  @Column({ type: "json", nullable: true })
-  defaultMetaKeywords!: string[];
 
   @Column({ type: "varchar", length: 255, nullable: true })
   ogTitle!: string;

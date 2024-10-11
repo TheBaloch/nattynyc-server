@@ -6,7 +6,9 @@ export class Price {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @ManyToOne(() => Product, (product) => product.prices)
+  @ManyToOne(() => Product, (product) => product.prices, {
+    onDelete: "CASCADE",
+  })
   product!: Product;
 
   @Column({ type: "decimal", precision: 10, scale: 2 })
